@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Slide from "@/components/Slide";
 import NavigationControls from "@/components/NavigationControls";
+import SlideSidebar from "@/components/SlideSidebar";
 
 import CoverSlide from "@/components/slides/CoverSlide";
 import PlanSlide from "@/components/slides/PlanSlide";
@@ -20,12 +21,13 @@ import GitHubSlide from "@/components/slides/GitHubSlide";
 import DemoSlide from "@/components/slides/DemoSlide";
 import MobileSlide from "@/components/slides/MobileSlide";
 import CICDSlide from "@/components/slides/CICDSlide";
+import DeploymentSlide from "@/components/slides/DeploymentSlide";
 import LogsSlide from "@/components/slides/LogsSlide";
 import IntegrationTestsSlide from "@/components/slides/IntegrationTestsSlide";
 import ConclusionSlide from "@/components/slides/ConclusionSlide";
 import ThanksSlide from "@/components/slides/ThanksSlide";
 
-const nopadSlides = new Set([0, 19, 20]);
+const nopadSlides = new Set([0, 20, 21]);
 
 const slides = [
   <CoverSlide />,            // 01 — Page de titre
@@ -45,10 +47,11 @@ const slides = [
   <DemoSlide />,             // 15 — Interfaces web
   <MobileSlide />,           // 16 — Application mobile Flutter
   <CICDSlide />,             // 17 — Infrastructure & DevOps
-  <LogsSlide />,             // 18 — Bilan & Limites
-  <IntegrationTestsSlide />, // 19 — Perspectives
-  <ConclusionSlide />,       // 20 — Conclusion
-  <ThanksSlide />,           // 21 — Questions
+  <DeploymentSlide />,       // 18 — Diagramme de déploiement
+  <LogsSlide />,             // 19 — Bilan & Limites
+  <IntegrationTestsSlide />, // 20 — Perspectives
+  <ConclusionSlide />,       // 21 — Conclusion
+  <ThanksSlide />,           // 22 — Questions
 ];
 
 const Index = () => {
@@ -66,6 +69,8 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <SlideSidebar current={current} onNavigate={setCurrent} />
+
       <AnimatePresence mode="wait">
         <Slide
           key={current}
