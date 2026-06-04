@@ -1,53 +1,72 @@
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
 
 const ConclusionSlide = () => {
+  const points = [
+    { emoji: "🌍", text: "Une réponse locale à un besoin local" },
+    { emoji: "🔒", text: "Sécurité et traçabilité des transactions" },
+    { emoji: "📱", text: "Mobile-First adapté au contexte nigérien" },
+    { emoji: "🚀", text: "En production sur tiquick.com dès aujourd'hui" },
+  ];
+
   return (
-    <div className="grid md:grid-cols-2 gap-12 items-center h-full max-w-6xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6 }}
-        className="flex justify-center"
+    <div className="absolute inset-0 flex flex-col bg-white">
+      {/* Top header band */}
+      <div
+        style={{ background: "linear-gradient(135deg, #18636B 0%, #43A6B0 100%)" }}
+        className="text-white text-center py-4 flex-shrink-0"
       >
-        <div className="relative">
-          <div className="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl" />
-          <img
-            src="public/bramcolor.jpg"
-            alt="Nouhou Ibrahim"
-            className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl object-cover ring-4 ring-primary/50 shadow-2xl"
-          />
-        </div>
-      </motion.div>
+        <h2 className="text-2xl font-black tracking-wide">CONCLUSION</h2>
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="space-y-8"
-      >
-        <div className="flex items-center gap-4 mb-6">
-          <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center shadow-lg shadow-primary/50">
-            <Sparkles className="w-8 h-8 text-white" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold">
-            {" "}
-            Merci pour votre attention 💫
-          </h2>
-        </div>
-
+      {/* Content */}
+      <div className="flex-1 flex flex-col items-center justify-center px-12 py-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="bg-secondary/30 backdrop-blur-sm rounded-xl p-6 border border-border"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3 }}
+          className="border-2 rounded-3xl p-8 mb-8 max-w-3xl w-full text-center"
+          style={{ borderColor: "#43A6B0", background: "rgba(67, 166, 176, 0.05)" }}
         >
-          <p className="text-xl font-semibold text-primary mb-2">
-            Nouhou Ibrahim
+          <p className="text-xl md:text-2xl font-black leading-snug" style={{ color: "#1A2B2C" }}>
+            TiQuick démontre qu'il est possible de concevoir une solution logicielle de{" "}
+            <span style={{ color: "#18636B" }}>qualité professionnelle</span> dans le cadre d'un mémoire
+            académique, adaptée aux réalités d'un{" "}
+            <span style={{ color: "#43A6B0" }}>marché local</span>.
           </p>
-          <p className="text-muted-foreground">Développeur Web</p>
         </motion.div>
-      </motion.div>
+
+        <div className="grid grid-cols-2 gap-3 w-full max-w-2xl mb-8">
+          {points.map((p, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 + i * 0.1 }}
+              className="flex items-center gap-3 bg-card border rounded-xl p-4 shadow-sm"
+              style={{ borderColor: "#D4E8E9" }}
+            >
+              <span className="text-xl">{p.emoji}</span>
+              <p className="text-sm font-medium" style={{ color: "#1A2B2C" }}>{p.text}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-4 w-full max-w-md">
+          <div className="flex-1 h-px" style={{ background: "#D4E8E9" }} />
+          <div className="w-2 h-2 rounded-full" style={{ background: "#F9C74C" }} />
+          <div className="flex-1 h-px" style={{ background: "#D4E8E9" }} />
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1 }}
+          className="text-base italic mt-5"
+          style={{ color: "#4A6567" }}
+        >
+          "La meilleure façon de prédire l'avenir, c'est de le construire."
+        </motion.p>
+      </div>
     </div>
   );
 };
