@@ -1,29 +1,36 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  Home, List, Info, HelpCircle, Zap, Search, RefreshCw,
+  Layers, Wrench, GitBranch, Shuffle, ArrowLeftRight,
+  Lock, Radio, Monitor, Smartphone, Server, Package,
+  BarChart2, Rocket, CheckCircle, MessageCircle,
+  Menu, X,
+} from "lucide-react";
 
 const slidesMeta = [
-  { num: "01", title: "Page de titre",          icon: "🏠" },
-  { num: "02", title: "Plan",                   icon: "📋" },
-  { num: "03", title: "Introduction",           icon: "💡" },
-  { num: "04", title: "Problématique",          icon: "❓" },
-  { num: "05", title: "TiQuick en 30s",         icon: "⚡" },
-  { num: "06", title: "État de l'art",          icon: "🔍" },
-  { num: "07", title: "Scrum",                  icon: "🔄" },
-  { num: "08", title: "Architecture",           icon: "🏗️" },
-  { num: "09", title: "Stack Technique",        icon: "🛠️" },
-  { num: "10", title: "Diag. Classes",          icon: "📐" },
-  { num: "11", title: "Diag. Activité",         icon: "🔀" },
-  { num: "12", title: "Diag. Séquence",         icon: "↔️" },
-  { num: "13", title: "AmanaTa HMAC",           icon: "🔐" },
-  { num: "14", title: "NITA",                   icon: "📡" },
-  { num: "15", title: "Interfaces web",         icon: "🖥️" },
-  { num: "16", title: "Mobile Flutter",         icon: "📱" },
-  { num: "17", title: "DevOps",                 icon: "⚙️" },
-  { num: "18", title: "Déploiement Docker",     icon: "🐳" },
-  { num: "19", title: "Bilan & Limites",        icon: "📊" },
-  { num: "20", title: "Perspectives",           icon: "🚀" },
-  { num: "21", title: "Conclusion",             icon: "✅" },
-  { num: "22", title: "Questions",              icon: "🙏" },
+  { num: "01", title: "Page de titre",      Icon: Home },
+  { num: "02", title: "Plan",               Icon: List },
+  { num: "03", title: "Introduction",       Icon: Info },
+  { num: "04", title: "Problématique",      Icon: HelpCircle },
+  { num: "05", title: "TiQuick en 30s",     Icon: Zap },
+  { num: "06", title: "État de l'art",      Icon: Search },
+  { num: "07", title: "Scrum",              Icon: RefreshCw },
+  { num: "08", title: "Architecture",       Icon: Layers },
+  { num: "09", title: "Stack Technique",    Icon: Wrench },
+  { num: "10", title: "Diag. Classes",      Icon: GitBranch },
+  { num: "11", title: "Diag. Activité",     Icon: Shuffle },
+  { num: "12", title: "Diag. Séquence",     Icon: ArrowLeftRight },
+  { num: "13", title: "AmanaTa HMAC",       Icon: Lock },
+  { num: "14", title: "NITA",               Icon: Radio },
+  { num: "15", title: "Interfaces web",     Icon: Monitor },
+  { num: "16", title: "Mobile Flutter",     Icon: Smartphone },
+  { num: "17", title: "DevOps",             Icon: Server },
+  { num: "18", title: "Déploiement Docker", Icon: Package },
+  { num: "19", title: "Bilan & Limites",    Icon: BarChart2 },
+  { num: "20", title: "Perspectives",       Icon: Rocket },
+  { num: "21", title: "Conclusion",         Icon: CheckCircle },
+  { num: "22", title: "Questions",          Icon: MessageCircle },
 ];
 
 interface Props {
@@ -44,13 +51,12 @@ const SlideSidebar = ({ current, onNavigate }: Props) => {
         className="fixed top-5 left-5 z-50 w-10 h-10 rounded-full flex items-center justify-center shadow-md border border-border bg-white/90 backdrop-blur-sm text-foreground transition-colors hover:bg-primary hover:text-white hover:border-primary"
         aria-label="Toggle navigation"
       >
-        <motion.span
+        <motion.div
           animate={{ rotate: open ? 90 : 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 24 }}
-          className="text-lg leading-none select-none"
         >
-          {open ? "✕" : "☰"}
-        </motion.span>
+          {open ? <X size={18} /> : <Menu size={18} />}
+        </motion.div>
       </motion.button>
 
       {/* Backdrop */}
@@ -89,8 +95,10 @@ const SlideSidebar = ({ current, onNavigate }: Props) => {
               </div>
               <button
                 onClick={() => setOpen(false)}
-                className="ml-auto text-muted-foreground hover:text-foreground transition-colors text-base"
-              >✕</button>
+                className="ml-auto text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <X size={16} />
+              </button>
             </div>
 
             {/* Slide list */}
@@ -114,8 +122,11 @@ const SlideSidebar = ({ current, onNavigate }: Props) => {
                       {s.num}
                     </span>
 
-                    {/* Icon */}
-                    <span className="text-sm flex-shrink-0">{s.icon}</span>
+                    {/* Lucide icon */}
+                    <s.Icon
+                      size={14}
+                      className={`flex-shrink-0 ${isActive ? "text-white" : "text-muted-foreground group-hover:text-primary"}`}
+                    />
 
                     {/* Title */}
                     <span className={`text-xs font-semibold leading-tight truncate ${
