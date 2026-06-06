@@ -1,40 +1,40 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, ExternalLink, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Globe, ExternalLink, X, ChevronLeft, ChevronRight, Home, Settings, BarChart3, Camera, Ticket, Smartphone } from "lucide-react";
 
 const screens = [
   {
-    emoji: "🏠",
+    icon: Home,
     label: "Page Accueil",
     desc: "tiquick.com",
     img: "/screenshots/accueil.png",
   },
   {
-    emoji: "🔧",
+    icon: Settings,
     label: "Dashboard Admin",
     desc: "Gestion globale",
     img: "/screenshots/dashboard-admin.png",
   },
   {
-    emoji: "📊",
+    icon: BarChart3,
     label: "Dashboard Organisateur",
     desc: "Ventes temps réel",
     img: "/screenshots/dashboard-org.png",
   },
   {
-    emoji: "📷",
+    icon: Camera,
     label: "Scan QR Code",
     desc: "Interface contrôleur",
     img: "/screenshots/scan-qr.png",
   },
   {
-    emoji: "🎫",
+    icon: Ticket,
     label: "Billet PDF",
     desc: "QR code intégré",
     img: "/screenshots/billet-pdf.png",
   },
   {
-    emoji: "📱",
+    icon: Smartphone,
     label: "App Mobile",
     desc: "Flutter iOS + Android",
     img: "/screenshots/app-mobile.png",
@@ -97,9 +97,9 @@ const DemoSlide = () => {
                   onLoad={(e) => (e.currentTarget.style.opacity = "1")}
                   onError={(e) => (e.currentTarget.style.display = "none")}
                 />
-                <span className="text-4xl group-hover:scale-110 transition-transform relative z-10">
-                  {s.emoji}
-                </span>
+                <div className="group-hover:scale-110 transition-transform relative z-10 text-primary">
+                  <s.icon size={40} />
+                </div>
                 {/* Zoom hint */}
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors flex items-center justify-center">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity text-xs text-primary font-bold bg-background/80 px-2 py-1 rounded-lg">
@@ -158,7 +158,12 @@ const DemoSlide = () => {
               {/* Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-border flex-shrink-0">
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">{screens[selected].emoji}</span>
+                  <div className="text-primary">
+                    {(() => {
+                      const Icon = screens[selected].icon;
+                      return <Icon size={24} />;
+                    })()}
+                  </div>
                   <div>
                     <p className="font-bold text-foreground">{screens[selected].label}</p>
                     <p className="text-xs text-muted-foreground">{screens[selected].desc}</p>
@@ -191,7 +196,6 @@ const DemoSlide = () => {
                       const msg = document.createElement("div");
                       msg.className = "placeholder-msg flex flex-col items-center gap-4 p-12 text-center";
                       msg.innerHTML = `
-                        <span style="font-size:5rem">${screens[selected]?.emoji ?? ""}</span>
                         <p style="color:hsl(var(--muted-foreground));font-size:0.875rem">
                           Placez le screenshot ici :<br/>
                           <code style="color:hsl(var(--primary));font-family:monospace">public${screens[selected]?.img ?? ""}</code>

@@ -1,18 +1,19 @@
 import { motion } from "framer-motion";
+import { Hand, Key, Home, Theater, ShoppingCart, CreditCard, Ticket, Smartphone, User, Camera } from "lucide-react";
 
 const screens = [
-  { emoji: "👋", label: "Onboarding", img: "/screenshots/mobile/onboarding.png" },
-  { emoji: "🔑", label: "Connexion", img: "/screenshots/mobile/login.png" },
-  { emoji: "🏠", label: "Accueil", img: "/screenshots/mobile/home.png" },
-  { emoji: "🎭", label: "Détail événement", img: "/screenshots/mobile/event-detail.png" },
-  { emoji: "🛒", label: "Checkout", img: "/screenshots/mobile/checkout.png" },
-  { emoji: "💳", label: "Paiement", img: "/screenshots/mobile/payment.png" },
-  { emoji: "🎫", label: "Mes Tickets", img: "/screenshots/mobile/my-tickets.png" },
-  { emoji: "📱", label: "Détail Ticket / QR", img: "/screenshots/mobile/ticket-detail.png" },
-  { emoji: "👤", label: "Profil", img: "/screenshots/mobile/profile.png" },
+  { icon: Hand, label: "Onboarding", img: "/screenshots/mobile/onboarding.png" },
+  { icon: Key, label: "Connexion", img: "/screenshots/mobile/login.png" },
+  { icon: Home, label: "Accueil", img: "/screenshots/mobile/home.png" },
+  { icon: Theater, label: "Détail événement", img: "/screenshots/mobile/event-detail.png" },
+  { icon: ShoppingCart, label: "Checkout", img: "/screenshots/mobile/checkout.png" },
+  { icon: CreditCard, label: "Paiement", img: "/screenshots/mobile/payment.png" },
+  { icon: Ticket, label: "Mes Tickets", img: "/screenshots/mobile/my-tickets.png" },
+  { icon: Smartphone, label: "Détail Ticket / QR", img: "/screenshots/mobile/ticket-detail.png" },
+  { icon: User, label: "Profil", img: "/screenshots/mobile/profile.png" },
 ];
 
-const Phone = ({ emoji, label, img }: { emoji: string; label: string; img: string }) => (
+const Phone = ({ Icon, label, img }: { Icon: any; label: string; img: string }) => (
   <div className="flex flex-col items-center gap-1.5">
     <div className="relative w-16 h-28 rounded-[14px] overflow-hidden shadow-md border-2 border-gray-800 bg-gray-900 flex flex-col">
       <div className="h-2 bg-gray-900 flex items-center justify-center flex-shrink-0">
@@ -25,8 +26,8 @@ const Phone = ({ emoji, label, img }: { emoji: string; label: string; img: strin
           className="w-full h-full object-cover"
           onError={(e) => { e.currentTarget.style.display = "none"; }}
         />
-        <div className="absolute inset-0 flex items-center justify-center text-xl bg-secondary/30">
-          {emoji}
+        <div className="absolute inset-0 flex items-center justify-center text-primary bg-secondary/30">
+          <Icon size={24} />
         </div>
       </div>
       <div className="h-1.5 bg-gray-900 flex items-center justify-center flex-shrink-0">
@@ -85,7 +86,7 @@ const MobileSlide = () => {
         <div className="flex justify-center gap-4 flex-wrap">
           {screens.map((s, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.05 }}>
-              <Phone emoji={s.emoji} label={s.label} img={s.img} />
+              <Phone Icon={s.icon} label={s.label} img={s.img} />
             </motion.div>
           ))}
         </div>
@@ -99,7 +100,7 @@ const MobileSlide = () => {
         className="w-full flex items-center gap-4 bg-card border border-border rounded-2xl p-4 shadow-sm"
       >
         <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "#E8F5E9" }}>
-          <span className="text-2xl">📷</span>
+          <Camera className="w-6 h-6 text-green-600" />
         </div>
         <div className="flex-1">
           <p className="font-bold text-sm text-foreground">Flux Agent de Contrôle — Scanner QR Code</p>

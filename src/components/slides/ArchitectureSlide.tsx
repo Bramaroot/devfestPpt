@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Cloud } from "lucide-react";
 
 const Arrow = ({ label = "" }: { label?: string }) => (
   <div className="flex flex-col items-center my-0.5">
@@ -38,7 +39,7 @@ const ArchitectureSlide = () => {
             className="flex items-center gap-3 px-5 py-2.5 rounded-2xl border font-bold text-sm w-full max-w-2xl justify-center"
             style={{ background: "#FEF3E2", borderColor: "#F6821F", color: "#C05621" }}
           >
-            <span>☁️</span>
+            <Cloud size={20} className="text-[#F6821F]" />
             <span>Cloudflare — DNS · CDN · SSL/TLS · DDoS Protection</span>
           </div>
         </div>

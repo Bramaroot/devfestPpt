@@ -22,12 +22,15 @@ import DemoSlide from "@/components/slides/DemoSlide";
 import MobileSlide from "@/components/slides/MobileSlide";
 import CICDSlide from "@/components/slides/CICDSlide";
 import DeploymentSlide from "@/components/slides/DeploymentSlide";
-import LogsSlide from "@/components/slides/LogsSlide";
+import BackupSlide from "@/components/slides/BackupSlide";
+import BackupDiagramSlide from "@/components/slides/BackupDiagramSlide";
+import BilanSlide from "@/components/slides/BilanSlide";
+import LimitesSlide from "@/components/slides/LimitesSlide";
 import IntegrationTestsSlide from "@/components/slides/IntegrationTestsSlide";
 import ConclusionSlide from "@/components/slides/ConclusionSlide";
 import ThanksSlide from "@/components/slides/ThanksSlide";
 
-const nopadSlides = new Set([0, 20, 21]);
+const nopadSlides = new Set([0, 23, 24]);
 
 const slides = [
   <CoverSlide />,            // 01 — Page de titre
@@ -48,10 +51,13 @@ const slides = [
   <MobileSlide />,           // 16 — Application mobile Flutter
   <CICDSlide />,             // 17 — Infrastructure & DevOps
   <DeploymentSlide />,       // 18 — Diagramme de déploiement
-  <LogsSlide />,             // 19 — Bilan & Limites
-  <IntegrationTestsSlide />, // 20 — Perspectives
-  <ConclusionSlide />,       // 21 — Conclusion
-  <ThanksSlide />,           // 22 — Questions
+  <BackupSlide />,           // 19 — Stratégie de Sauvegarde
+  <BackupDiagramSlide />,    // 20 — Architecture de Sauvegarde
+  <BilanSlide />,            // 21 — Bilan du Projet
+  <LimitesSlide />,          // 22 — Limites & Perspectives
+  <IntegrationTestsSlide />, // 23 — Perspectives (Ancien IntegrationTests)
+  <ConclusionSlide />,       // 24 — Conclusion
+  <ThanksSlide />,           // 25 — Questions
 ];
 
 const Index = () => {

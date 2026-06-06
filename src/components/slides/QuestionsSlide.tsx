@@ -19,9 +19,10 @@ const QuestionsSlide = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-5xl md:text-7xl font-bold mb-8"
+        className="text-5xl md:text-7xl font-bold mb-8 flex items-center justify-center gap-4"
       >
-        Des questions ? 💭
+        <span>Des questions ?</span>
+        <HelpCircle className="w-12 h-12 text-primary" />
       </motion.h2>
 
       <motion.div

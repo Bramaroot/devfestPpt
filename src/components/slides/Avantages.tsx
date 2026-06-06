@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { CheckCircle2, XCircle, Lightbulb } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Avantages = () => {
@@ -97,16 +97,19 @@ const Avantages = () => {
         </motion.div>
       </div>
 
-      <motion.p
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.5 }}
-        className="text-muted-foreground text-center mt-10 text-lg italic max-w-3xl"
+        className="text-muted-foreground text-center mt-10 text-lg italic max-w-3xl flex items-center justify-center gap-3"
       >
-        💡 Malgré quelques limitations, Vercel reste un excellent choix pour
-        déployer rapidement des applications web modernes, surtout en phase de
-        développement et pour les projets de taille moyenne.
-      </motion.p>
+        <Lightbulb className="w-6 h-6 text-yellow-500 shrink-0" />
+        <p>
+          Malgré quelques limitations, Vercel reste un excellent choix pour
+          déployer rapidement des applications web modernes, surtout en phase de
+          développement et pour les projets de taille moyenne.
+        </p>
+      </motion.div>
     </div>
   );
 };

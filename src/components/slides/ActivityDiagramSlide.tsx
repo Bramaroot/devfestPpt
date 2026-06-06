@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Ticket, Check } from "lucide-react";
 
 const Step = ({ text, color }: { text: string; color: string }) => (
   <div className="px-3 py-2 rounded-xl border text-xs font-medium text-center leading-tight" style={{ background: color, borderColor: "rgba(0,0,0,0.08)" }}>
@@ -78,7 +79,10 @@ const ActivityDiagramSlide = () => {
                 <Down />
                 <Step text="Accède à Mes tickets" color="#E3F2FD" />
                 <Down />
-                <Step text="Télécharge PDF 🎫" color="#E3F2FD" />
+                <div className="flex items-center justify-center gap-2 px-3 py-2 rounded-xl border text-xs font-medium text-center leading-tight" style={{ background: "#E3F2FD", borderColor: "rgba(0,0,0,0.08)" }}>
+                  <Ticket size={14} className="text-primary" />
+                  <span>Télécharge PDF</span>
+                </div>
                 <Down />
                 <Dot fill="#27AE60" />
               </>
@@ -103,7 +107,10 @@ const ActivityDiagramSlide = () => {
                 <Down label="webhook" />
                 <Step text="UPDATE statut = payé" color="#E8F5E9" />
                 <Down />
-                <Step text="Billet disponible ✓" color="#E8F5E9" />
+                <div className="flex items-center justify-center gap-2 px-3 py-2 rounded-xl border text-xs font-medium text-center leading-tight" style={{ background: "#E8F5E9", borderColor: "rgba(0,0,0,0.08)" }}>
+                  <span>Billet disponible</span>
+                  <Check size={14} className="text-green-600" />
+                </div>
               </>
             )}
 

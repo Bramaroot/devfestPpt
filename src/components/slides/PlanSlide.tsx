@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
+import { Globe, BarChart3, Settings, Laptop, Smartphone, Rocket } from "lucide-react";
 
 const points = [
-  { num: "01", emoji: "🌍", title: "Introduction & Problématique", sub: "Contexte nigérien, enjeux" },
-  { num: "02", emoji: "📊", title: "État de l'art & Positionnement", sub: "Comparatif des solutions" },
-  { num: "03", emoji: "⚙️", title: "Méthodologie & Conception", sub: "Scrum, architecture, modèles" },
-  { num: "04", emoji: "💻", title: "Réalisation Technique", sub: "AmanaTa, NITA, QR code" },
-  { num: "05", emoji: "📱", title: "Application Mobile", sub: "Flutter — iOS & Android" },
-  { num: "06", emoji: "🚀", title: "DevOps, Tests & Infrastructure", sub: "Dokploy, CI/CD, bilan" },
+  { num: "01", icon: Globe, title: "Introduction & Problématique", sub: "Contexte nigérien, enjeux" },
+  { num: "02", icon: BarChart3, title: "État de l'art & Positionnement", sub: "Comparatif des solutions" },
+  { num: "03", icon: Settings, title: "Méthodologie & Conception", sub: "Scrum, architecture, modèles" },
+  { num: "04", icon: Laptop, title: "Réalisation Technique", sub: "AmanaTa, NITA, QR code" },
+  { num: "05", icon: Smartphone, title: "Application Mobile", sub: "Flutter — iOS & Android" },
+  { num: "06", icon: Rocket, title: "DevOps, Tests & Infrastructure", sub: "Dokploy, CI/CD, bilan" },
 ];
 
 const PlanSlide = () => {
@@ -37,8 +38,10 @@ const PlanSlide = () => {
             >
               {p.num}
             </div>
-            <div className="flex items-start gap-2 flex-1">
-              <span className="text-xl mt-0.5">{p.emoji}</span>
+            <div className="flex items-start gap-3 flex-1">
+              <div className="mt-1 text-primary">
+                <p.icon size={24} />
+              </div>
               <div>
                 <p className="font-bold text-foreground text-sm">{p.title}</p>
                 <p className="text-xs text-muted-foreground mt-0.5">{p.sub}</p>

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Cloud, Server } from "lucide-react";
 
 /* ── sub-components ─────────────────────────────────────────────── */
 
@@ -88,7 +89,7 @@ const DeploymentSlide = () => (
       className="w-full rounded-2xl border-2 px-5 py-3 flex items-center gap-4 mb-1"
       style={{ borderColor: "#F6821F", background: "#FEF3E2" }}
     >
-      <span className="text-xl">☁️</span>
+      <Cloud size={24} className="text-[#F6821F]" />
       <div>
         <p className="font-black text-sm text-orange-700">Cloudflare</p>
         <p className="text-[10px] text-orange-600/80">DNS · CDN · SSL/TLS · DDoS Protection · IP Whitelisting</p>
@@ -109,7 +110,7 @@ const DeploymentSlide = () => (
     >
       {/* VPS label */}
       <div className="flex items-center gap-2 mb-4">
-        <span className="text-base">🖥️</span>
+        <Server size={18} className="text-primary" />
         <p className="font-black text-sm text-primary">VPS Hetzner · Ubuntu 22.04 · Dokploy</p>
         <span className="ml-auto text-[10px] font-mono bg-primary/10 text-primary px-2 py-0.5 rounded border border-primary/20">
           app-network (bridge)

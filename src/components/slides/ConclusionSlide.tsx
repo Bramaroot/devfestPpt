@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
+import { Globe, Lock, Smartphone, Rocket } from "lucide-react";
 
 const ConclusionSlide = () => {
   const points = [
-    { emoji: "🌍", text: "Une réponse locale à un besoin local" },
-    { emoji: "🔒", text: "Sécurité et traçabilité des transactions" },
-    { emoji: "📱", text: "Mobile-First adapté au contexte nigérien" },
-    { emoji: "🚀", text: "En production sur tiquick.com dès aujourd'hui" },
+    { icon: Globe, text: "Une réponse locale à un besoin local", color: "text-blue-500" },
+    { icon: Lock, text: "Sécurité et traçabilité des transactions", color: "text-green-500" },
+    { icon: Smartphone, text: "Mobile-First adapté au contexte nigérien", color: "text-purple-500" },
+    { icon: Rocket, text: "En production sur tiquick.com dès aujourd'hui", color: "text-orange-500" },
   ];
 
   return (
@@ -45,7 +46,7 @@ const ConclusionSlide = () => {
               className="flex items-center gap-3 bg-card border rounded-xl p-4 shadow-sm"
               style={{ borderColor: "#D4E8E9" }}
             >
-              <span className="text-xl">{p.emoji}</span>
+              <p.icon size={20} className={p.color} />
               <p className="text-sm font-medium" style={{ color: "#1A2B2C" }}>{p.text}</p>
             </motion.div>
           ))}

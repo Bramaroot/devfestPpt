@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Globe } from "lucide-react";
+import { Globe, Check, Smartphone } from "lucide-react";
 
 const ValueSlide = () => {
   const stats = [
@@ -47,11 +47,12 @@ const ValueSlide = () => {
           <Globe className="w-4 h-4 text-primary" />
           <span className="font-bold text-primary font-mono">tiquick.com</span>
           <span className="text-muted-foreground text-sm">— Déployé en production</span>
-          <span className="text-green-400">✓</span>
+          <Check className="w-4 h-4 text-green-400" />
         </div>
         <div className="flex items-center gap-3 bg-card border border-purple-500/30 rounded-2xl px-6 py-3">
-          <span className="text-purple-400 font-bold text-sm">📱 Application mobile Flutter</span>
-          <span className="text-green-400">✓</span>
+          <Smartphone className="w-4 h-4 text-purple-400" />
+          <span className="text-purple-400 font-bold text-sm">Application mobile Flutter</span>
+          <Check className="w-4 h-4 text-green-400" />
         </div>
       </motion.div>
     </div>

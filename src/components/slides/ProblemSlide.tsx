@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { XCircle, ArrowDown } from "lucide-react";
 
 const ProblemSlide = () => {
   const problems = [
@@ -38,7 +39,7 @@ const ProblemSlide = () => {
               transition={{ delay: 0.25 + i * 0.07 }}
               className="flex items-start gap-3 bg-card border border-border rounded-xl p-3 shadow-sm"
             >
-              <span className="text-base font-black flex-shrink-0 mt-0.5" style={{ color: "#E74C3C" }}>✗</span>
+              <XCircle size={18} className="text-red-500 shrink-0 mt-0.5" />
               <p className="text-sm font-medium text-foreground leading-snug">{p}</p>
             </motion.div>
           ))}
@@ -62,7 +63,7 @@ const ProblemSlide = () => {
 
           <div className="flex flex-col items-center gap-1 text-muted-foreground">
             <div className="w-px h-8" style={{ background: "#D4E8E9" }} />
-            <div className="text-xl" style={{ color: "#43A6B0" }}>↓</div>
+            <ArrowDown size={24} className="text-[#43A6B0]" />
           </div>
 
           <div className="bg-secondary border border-primary/20 rounded-xl p-4 text-center">
