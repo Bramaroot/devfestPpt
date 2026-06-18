@@ -17,9 +17,10 @@ const IntroductionSlide = () => {
         transition={{ delay: 0.2 }}
         className="text-lg text-muted-foreground text-center mb-4 leading-relaxed"
       >
-        En Afrique de l'Ouest, la révolution numérique transforme progressivement les usages — mais le secteur
-        événementiel nigérien reste encore ancré dans des pratiques informelles qui exposent organisateurs et
-        participants à des risques réels de fraude, d'opacité financière et d'exclusion.
+        Alors que le Niger vit une mutation numérique sans précédent avec plus de 
+        <span className="text-primary font-bold"> 14 millions d'abonnés mobiles</span>, le secteur de l'événementiel 
+        reste paradoxalement prisonnier de méthodes archaïques. La billetterie papier, synonyme 
+        d'opacité financière et de fraudes, freine l'épanouissement de notre économie créative.
       </motion.p>
 
       <motion.p
@@ -28,10 +29,10 @@ const IntroductionSlide = () => {
         transition={{ delay: 0.35 }}
         className="text-lg text-muted-foreground text-center mb-8 leading-relaxed"
       >
-        Face à ce constat, et fort d'une infrastructure de paiement mobile en pleine expansion avec des acteurs
-        comme <span className="text-primary font-semibold">AmanaTa B2B</span> et{" "}
-        <span className="text-primary font-semibold">NITA Achat en ligne</span>, ce projet ambitionne de
-        répondre à une question simple :
+        C'est à l'intersection de ce besoin de <span className="text-primary font-semibold">transparence</span> et 
+        de l'essor des fintechs locales comme <span className="text-primary font-semibold">AmanaTa</span> et 
+        <span className="text-primary font-semibold"> NITA</span> que naît **TiQuick** : un dispositif 
+        technologique souverain conçu pour répondre à un défi majeur :
       </motion.p>
 
       <div className="flex items-center gap-4 w-full max-w-2xl mb-8">

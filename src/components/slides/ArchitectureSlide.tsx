@@ -88,7 +88,7 @@ const ArchitectureSlide = () => {
               className="flex-2 flex-grow rounded-xl border px-4 py-2.5"
               style={{ background: "#FFF1F0", borderColor: "#FECACA" }}
             >
-              <p className="font-bold text-xs text-red-700 mb-0.5">Laravel 11 API</p>
+              <p className="font-bold text-xs text-red-700 mb-0.5">Laravel 12 API</p>
               <p className="text-[10px] text-muted-foreground leading-tight">
                 Sanctum · RBAC · Génération PDF · Horizon · Queues
               </p>
@@ -115,7 +115,7 @@ const ArchitectureSlide = () => {
                 style={{ background: "#F0FDF4", borderColor: "#86EFAC" }}
               >
                 <p className="font-bold text-[10px] text-green-700">NITA</p>
-                <p className="text-[9px] text-muted-foreground">Notifs SMS</p>
+                <p className="text-[9px] text-muted-foreground">Paiement en ligne</p>
               </div>
               <div
                 className="rounded-xl border px-3 py-1.5 text-center"

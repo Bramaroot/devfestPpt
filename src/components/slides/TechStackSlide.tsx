@@ -129,7 +129,7 @@ const categories: Category[] = [
     id: "backend", label: "Backend", subtitle: "API REST · Logique métier · Données",
     gradient: "linear-gradient(135deg, #D4920A 0%, #F0B429 55%, #F9C74C 100%)",
     techs: [
-      { name: "Laravel 11",  role: "API REST · Sanctum · RBAC",  brandColor: "#FF2D20", bg: "#FFF1F0", Logo: LaravelLogo },
+      { name: "Laravel 12",  role: "API REST · Sanctum · RBAC",  brandColor: "#FF2D20", bg: "#FFF1F0", Logo: LaravelLogo },
       { name: "Horizon",     role: "Queue workers · Monitoring", brandColor: "#FF6B35", bg: "#FFF5F0", Logo: HorizonLogo },
       { name: "PostgreSQL",  role: "Base relationnelle",         brandColor: "#336791", bg: "#EBF4FD", Logo: PostgresLogo },
       { name: "Redis",       role: "Cache · Sessions · Queues",  brandColor: "#DC382D", bg: "#FFF0EF", Logo: RedisLogo },

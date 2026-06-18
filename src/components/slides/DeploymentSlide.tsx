@@ -138,7 +138,7 @@ const DeploymentSlide = () => (
       <div className="flex gap-3 mb-1">
         <Container
           name="laravel"
-          image="php:8.3-fpm"
+          image="php:8.2-fpm"
           ports={["9000"]}
           tags={["sanctum", "horizon", "pdf"]}
           color="#DC2626"
@@ -150,11 +150,11 @@ const DeploymentSlide = () => (
         </div>
         <Container
           name="horizon"
-          image="php:8.3-cli"
+          image="php:8.2-cli"
           tags={["queue:work", "supervisor"]}
           color="#B45309"
           delay={0.42}
-          note="Emails · PDF async · Webhooks"
+          note="Emails · Notifications · Webhooks"
         />
       </div>
 
