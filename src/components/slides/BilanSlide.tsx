@@ -82,14 +82,7 @@ const BilanSlide = () => {
             ))}
           </div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="mt-4 text-center text-muted-foreground italic text-sm"
-          >
-            "Un travail complet couvrant tout le cycle de vie du développement logiciel, de la conception au déploiement."
-          </motion.p>
+
         </motion.div>
       </div>
     </div>

@@ -33,9 +33,14 @@ const DockerSlide = () => {
           <ShieldCheck className="w-4 h-4 text-[#F9C74C]" />
           <span className="text-[#F9C74C] text-xs font-semibold uppercase tracking-wider">Défi Technique 1</span>
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold">
-          Intégration <span className="text-primary">AmanaTa B2B</span>
-        </h2>
+        <div className="flex items-center justify-center gap-4 mb-2">
+          <h2 className="text-4xl md:text-5xl font-bold">
+            Intégration <span className="text-primary">AmanaTa B2B</span>
+          </h2>
+          <div className="bg-white p-2 rounded-xl">
+             <img src="/Logos/amana.png" alt="AmanaTa Logo" className="h-12 w-auto object-contain" />
+          </div>
+        </div>
         <p className="text-muted-foreground mt-2 text-sm">Flux de paiement sécurisé — HMAC-SHA256</p>
       </motion.div>
 

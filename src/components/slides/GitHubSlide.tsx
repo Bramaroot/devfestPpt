@@ -26,9 +26,14 @@ const GitHubSlide = () => {
           <Network className="w-4 h-4 text-primary" />
           <span className="text-primary text-xs font-semibold uppercase tracking-wider">Défi Technique 2</span>
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold">
-          Intégration <span className="text-primary">NITA</span>
-        </h2>
+        <div className="flex items-center justify-center gap-4 mb-2">
+          <h2 className="text-4xl md:text-5xl font-bold">
+            Intégration <span className="text-primary">NITA</span>
+          </h2>
+          <div className="bg-white p-2 rounded-xl">
+             <img src="/Logos/logo.png" alt="NITA Logo" className="h-12 w-auto object-contain" />
+          </div>
+        </div>
         <p className="text-muted-foreground mt-2 text-sm">2 contraintes spécifiques et leurs solutions</p>
       </motion.div>
 

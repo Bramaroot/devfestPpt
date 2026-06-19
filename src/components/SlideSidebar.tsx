@@ -5,32 +5,36 @@ import {
   Layers, Wrench, GitBranch, Shuffle, ArrowLeftRight,
   Lock, Radio, Monitor, Smartphone, Server, Package,
   BarChart2, Rocket, CheckCircle, MessageCircle,
-  Menu, X,
+  Menu, X, Target, AlertTriangle
 } from "lucide-react";
 
 const slidesMeta = [
-  { num: "01", title: "Page de titre",      Icon: Home },
-  { num: "02", title: "Plan",               Icon: List },
-  { num: "03", title: "Introduction",       Icon: Info },
-  { num: "04", title: "Problématique",      Icon: HelpCircle },
-  { num: "05", title: "TiQuick en 30s",     Icon: Zap },
-  { num: "06", title: "État de l'art",      Icon: Search },
-  { num: "07", title: "Scrum",              Icon: RefreshCw },
-  { num: "08", title: "Architecture",       Icon: Layers },
-  { num: "09", title: "Stack Technique",    Icon: Wrench },
-  { num: "10", title: "Diag. Classes",      Icon: GitBranch },
-  { num: "11", title: "Diag. Activité",     Icon: Shuffle },
-  { num: "12", title: "Diag. Séquence",     Icon: ArrowLeftRight },
-  { num: "13", title: "AmanaTa HMAC",       Icon: Lock },
-  { num: "14", title: "NITA",               Icon: Radio },
-  { num: "15", title: "Interfaces web",     Icon: Monitor },
-  { num: "16", title: "Mobile Flutter",     Icon: Smartphone },
-  { num: "17", title: "DevOps",             Icon: Server },
-  { num: "18", title: "Déploiement Docker", Icon: Package },
-  { num: "19", title: "Bilan & Limites",    Icon: BarChart2 },
-  { num: "20", title: "Perspectives",       Icon: Rocket },
-  { num: "21", title: "Conclusion",         Icon: CheckCircle },
-  { num: "22", title: "Questions",          Icon: MessageCircle },
+  { num: "01", title: "Page de titre",        Icon: Home },
+  { num: "02", title: "Plan",                 Icon: List },
+  { num: "03", title: "Introduction",         Icon: Info },
+  { num: "04", title: "Problématique",        Icon: HelpCircle },
+  { num: "05", title: "Hypothèse",            Icon: Search },
+  { num: "06", title: "Objectifs du Projet",  Icon: Target },
+  { num: "07", title: "Cas d'utilisation",    Icon: Monitor },
+  { num: "08", title: "Diag. Classes",        Icon: GitBranch },
+  { num: "09", title: "Diag. Activité",       Icon: Shuffle },
+  { num: "10", title: "Diag. Séquence",       Icon: ArrowLeftRight },
+  { num: "11", title: "TiQuick en 30s",       Icon: Zap },
+  { num: "12", title: "Scrum",                Icon: RefreshCw },
+  { num: "13", title: "Architecture",         Icon: Layers },
+  { num: "14", title: "Stack Technique",      Icon: Wrench },
+  { num: "15", title: "Diff. & Solutions",    Icon: AlertTriangle },
+  { num: "16", title: "Interfaces web",       Icon: Monitor },
+  { num: "17", title: "Mobile Flutter",       Icon: Smartphone },
+  { num: "18", title: "DevOps",               Icon: Server },
+  { num: "19", title: "Sauvegarde",           Icon: Lock },
+  { num: "20", title: "Architecture Sauvegarde", Icon: Layers },
+  { num: "21", title: "Bilan du Projet",      Icon: BarChart2 },
+  { num: "22", title: "Limites & Perspectives", Icon: Rocket },
+  { num: "23", title: "Perspectives",         Icon: Rocket },
+  { num: "24", title: "Persp. & Évolutions",  Icon: Rocket },
+  { num: "25", title: "Conclusion",           Icon: CheckCircle },
+  { num: "26", title: "Questions",            Icon: MessageCircle },
 ];
 
 interface Props {
@@ -48,7 +52,7 @@ const SlideSidebar = ({ current, onNavigate }: Props) => {
         onClick={() => setOpen((v) => !v)}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.93 }}
-        className="fixed top-5 left-5 z-50 w-10 h-10 rounded-full flex items-center justify-center shadow-md border border-border bg-white/90 backdrop-blur-sm text-foreground transition-colors hover:bg-primary hover:text-white hover:border-primary"
+        className="fixed top-5 left-5 z-50 w-10 h-10 rounded-full flex items-center justify-center shadow-md border border-border bg-white/90 backdrop-blur-sm text-foreground transition-colors hover:bg-primary hover:text-white hover:border-primary opacity-0 pointer-events-none focus:opacity-100 focus:pointer-events-auto focus:outline-none focus:ring-2 focus:ring-primary"
         aria-label="Toggle navigation"
       >
         <motion.div

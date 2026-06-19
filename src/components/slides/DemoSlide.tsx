@@ -1,43 +1,49 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, ExternalLink, X, ChevronLeft, ChevronRight, Home, Settings, BarChart3, Camera, Ticket, Smartphone } from "lucide-react";
+import { Globe, ExternalLink, X, ChevronLeft, ChevronRight, Home, Settings, BarChart3, Camera, Ticket, Smartphone, Key, User, UserCog } from "lucide-react";
 
 const screens = [
   {
     icon: Home,
-    label: "Page Accueil",
+    label: "Page d'Accueil",
     desc: "tiquick.com",
-    img: "/screenshots/accueil.png",
+    img: "/AppWeb/TiQuick Acceuil.png",
+  },
+  {
+    icon: Globe,
+    label: "Page Événements",
+    desc: "Recherche et filtrage",
+    img: "/AppWeb/Tiquick EventsPage.png",
+  },
+  {
+    icon: Key,
+    label: "Connexion",
+    desc: "Authentification",
+    img: "/AppWeb/Page Tiquick Connexion.png",
+  },
+  {
+    icon: User,
+    label: "Inscription",
+    desc: "Création de compte",
+    img: "/AppWeb/Page Tiquick Inscription.png",
   },
   {
     icon: Settings,
     label: "Dashboard Admin",
     desc: "Gestion globale",
-    img: "/screenshots/dashboard-admin.png",
+    img: "/AppWeb/Admin Dashboard.png",
   },
   {
     icon: BarChart3,
-    label: "Dashboard Organisateur",
-    desc: "Ventes temps réel",
-    img: "/screenshots/dashboard-org.png",
+    label: "Dashboard Événements",
+    desc: "Suivi et modération",
+    img: "/AppWeb/Events Admin Dashboard.png",
   },
   {
-    icon: Camera,
-    label: "Scan QR Code",
-    desc: "Interface contrôleur",
-    img: "/screenshots/scan-qr.png",
-  },
-  {
-    icon: Ticket,
-    label: "Billet PDF",
-    desc: "QR code intégré",
-    img: "/screenshots/billet-pdf.png",
-  },
-  {
-    icon: Smartphone,
-    label: "App Mobile",
-    desc: "Flutter iOS + Android",
-    img: "/screenshots/app-mobile.png",
+    icon: UserCog,
+    label: "Paramètres du Compte",
+    desc: "Profil utilisateur",
+    img: "/AppWeb/Tiquick user Paramètres du Compte.png",
   },
 ];
 
@@ -79,7 +85,7 @@ const DemoSlide = () => {
           Cliquez sur un écran pour l'agrandir
         </motion.p>
 
-        <div className="grid grid-cols-3 gap-4 w-full mb-7">
+        <div className="flex flex-wrap justify-center gap-4 w-full mb-7">
           {screens.map((s, i) => (
             <motion.div
               key={i}
@@ -87,7 +93,7 @@ const DemoSlide = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 + i * 0.08 }}
               onClick={() => open(i)}
-              className="bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10 transition-all group cursor-pointer"
+              className="bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10 transition-all group cursor-pointer w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[calc(25%-12px)] max-w-[240px]"
             >
               <div className="h-28 bg-gradient-to-br from-secondary to-muted flex items-center justify-center relative overflow-hidden">
                 <img
@@ -97,9 +103,6 @@ const DemoSlide = () => {
                   onLoad={(e) => (e.currentTarget.style.opacity = "1")}
                   onError={(e) => (e.currentTarget.style.display = "none")}
                 />
-                <div className="group-hover:scale-110 transition-transform relative z-10 text-primary">
-                  <s.icon size={40} />
-                </div>
                 {/* Zoom hint */}
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors flex items-center justify-center">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity text-xs text-primary font-bold bg-background/80 px-2 py-1 rounded-lg">

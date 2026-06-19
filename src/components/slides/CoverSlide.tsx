@@ -6,18 +6,19 @@ const CoverSlide = () => {
       {/* Top banner */}
       <div
         style={{ background: "linear-gradient(135deg, #18636B 0%, #43A6B0 100%)" }}
-        className="text-white px-10 py-4 flex items-center justify-between flex-shrink-0"
+        className="text-white px-10 py-3 flex items-center justify-center gap-8 flex-shrink-0"
       >
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-            <span className="text-xs font-black">UIN</span>
-          </div>
+        <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-md border-2 border-white flex-shrink-0">
+          <img src="/Logos/logoOCI.jpg" alt="OCI Logo" className="w-10 h-10 object-contain rounded-full" />
         </div>
         <div className="text-center">
-          <p className="font-black text-sm tracking-wide">UNIVERSITÉ ISLAMIQUE DU NIGER</p>
-          <p className="text-xs text-white/80">Faculté des Sciences et Technologies de l'Information</p>
+          <p className="font-black text-[10px] tracking-widest text-white/90">ORGANISATION DE LA COOPÉRATION ISLAMIQUE</p>
+          <p className="font-black text-sm tracking-wide mt-0.5">UNIVERSITÉ ISLAMIQUE DU NIGER</p>
+          <p className="text-xs text-white/80 mt-0.5">Faculté des Sciences et Techniques — Département Informatique</p>
         </div>
-        <div className="w-16" />
+        <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-md border-2 border-white flex-shrink-0">
+          <img src="/Logos/logoUIN.jpg" alt="UIN Logo" className="w-10 h-10 object-contain rounded-full" />
+        </div>
       </div>
 
       {/* Main content */}
@@ -48,8 +49,8 @@ const CoverSlide = () => {
 
           {/* Title */}
           <div className="space-y-1">
-            <p className="text-base font-medium" style={{ color: "#4A6567" }}>
-              Mémoire de Fin d'Études — Bachelor en Informatique Bac+4
+            <p className="text-sm font-medium leading-relaxed" style={{ color: "#4A6567" }}>
+              Soutenance de mémoire de fin de cycle en vue d'obtention du diplôme de Bachelor de Sciences de l'Informatique, option Technologie de l'Information
             </p>
             <h1 className="text-xl md:text-2xl font-bold leading-snug" style={{ color: "#1A2B2C" }}>
               Conception et développement d'une plateforme web sécurisée
@@ -73,6 +74,7 @@ const CoverSlide = () => {
             <div>
               <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "#4A6567" }}>Encadreur</p>
               <p className="font-bold mt-1">M. Almou Bassirou</p>
+              <p className="text-[11px] text-muted-foreground mt-0.5 leading-tight">Ingénieur en Informatique</p>
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "#4A6567" }}>Année</p>

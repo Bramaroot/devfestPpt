@@ -7,57 +7,61 @@ import SlideSidebar from "@/components/SlideSidebar";
 import CoverSlide from "@/components/slides/CoverSlide";
 import PlanSlide from "@/components/slides/PlanSlide";
 import IntroductionSlide from "@/components/slides/IntroductionSlide";
-import ProblemSlide from "@/components/slides/ProblemSlide";
-import ValueSlide from "@/components/slides/ValueSlide";
-import ObservabilitySlide from "@/components/slides/ObservabilitySlide";
-import MetricsSlide from "@/components/slides/MetricsSlide";
-import ArchitectureSlide from "@/components/slides/ArchitectureSlide";
-import TechStackSlide from "@/components/slides/TechStackSlide";
+import ParadoxeSlide from "@/components/slides/ParadoxeSlide";
+import ProblematiqueSlide from "@/components/slides/ProblematiqueSlide";
+import HypotheseSlide from "@/components/slides/HypotheseSlide";
+import ObjectivesSlide from "@/components/slides/ObjectivesSlide";
+import UseCaseModelingSlide from "@/components/slides/UseCaseModelingSlide";
 import ClassDiagramSlide from "@/components/slides/ClassDiagramSlide";
 import ActivityDiagramSlide from "@/components/slides/ActivityDiagramSlide";
 import SequenceDiagramSlide from "@/components/slides/SequenceDiagramSlide";
-import DockerSlide from "@/components/slides/DockerSlide";
-import GitHubSlide from "@/components/slides/GitHubSlide";
+import ValueSlide from "@/components/slides/ValueSlide";
+import MetricsSlide from "@/components/slides/MetricsSlide";
+import ArchitectureSlide from "@/components/slides/ArchitectureSlide";
+import TechStackSlide from "@/components/slides/TechStackSlide";
+import ChallengesSlide from "@/components/slides/ChallengesSlide";
 import DemoSlide from "@/components/slides/DemoSlide";
 import MobileSlide from "@/components/slides/MobileSlide";
 import CICDSlide from "@/components/slides/CICDSlide";
-import DeploymentSlide from "@/components/slides/DeploymentSlide";
 import BackupSlide from "@/components/slides/BackupSlide";
 import BackupDiagramSlide from "@/components/slides/BackupDiagramSlide";
 import BilanSlide from "@/components/slides/BilanSlide";
 import LimitesSlide from "@/components/slides/LimitesSlide";
 import IntegrationTestsSlide from "@/components/slides/IntegrationTestsSlide";
+import FutureEvolutionSlide from "@/components/slides/FutureEvolutionSlide";
 import ConclusionSlide from "@/components/slides/ConclusionSlide";
 import ThanksSlide from "@/components/slides/ThanksSlide";
 
-const nopadSlides = new Set([0, 23, 24]);
+const nopadSlides = new Set([0, 4, 25, 26]);
 
 const slides = [
   <CoverSlide />,            // 01 — Page de titre
   <PlanSlide />,             // 02 — Plan
   <IntroductionSlide />,     // 03 — Introduction
-  <ProblemSlide />,          // 04 — Contexte & Problématique
-  <ValueSlide />,            // 05 — TiQuick en 30 secondes
-  <ObservabilitySlide />,    // 06 — État de l'art
-  <MetricsSlide />,          // 07 — Méthodologie Scrum
-  <ArchitectureSlide />,     // 08 — Architecture 3-tiers
-  <TechStackSlide />,        // 09 — Stack Technique
-  <ClassDiagramSlide />,     // 10 — Diagramme de classes
-  <ActivityDiagramSlide />,  // 11 — Diagramme d'activité
-  <SequenceDiagramSlide />,  // 12 — Diagramme de séquence
-  <DockerSlide />,           // 13 — Défi 1 : AmanaTa HMAC
-  <GitHubSlide />,           // 14 — Défi 2 : NITA
-  <DemoSlide />,             // 15 — Interfaces web
-  <MobileSlide />,           // 16 — Application mobile Flutter
-  <CICDSlide />,             // 17 — Infrastructure & DevOps
-  <DeploymentSlide />,       // 18 — Diagramme de déploiement
-  <BackupSlide />,           // 19 — Stratégie de Sauvegarde
-  <BackupDiagramSlide />,    // 20 — Architecture de Sauvegarde
-  <BilanSlide />,            // 21 — Bilan du Projet
-  <LimitesSlide />,          // 22 — Limites & Perspectives
-  <IntegrationTestsSlide />, // 23 — Perspectives (Ancien IntegrationTests)
-  <ConclusionSlide />,       // 24 — Conclusion
-  <ThanksSlide />,           // 25 — Questions
+  <ParadoxeSlide />,         // 04 — Le paradoxe nigérien
+  <ProblematiqueSlide />,    // 04B — La problématique
+  <HypotheseSlide />,        // 05 — Hypothèse de Recherche
+  <ObjectivesSlide />,       // 06 — Objectifs du Projet
+  <UseCaseModelingSlide />,  // 07 — Cas d'utilisation (Modélisation)
+  <ClassDiagramSlide />,     // 08 — Diagramme de classes (Modélisation)
+  <ActivityDiagramSlide />,  // 09 — Diagramme d'activité (Modélisation)
+  <SequenceDiagramSlide />,  // 10 — Diagramme de séquence (Modélisation)
+  <ValueSlide />,            // 11 — TiQuick en 30 secondes
+  <MetricsSlide />,          // 12 — Méthodologie Scrum
+  <ArchitectureSlide />,     // 14 — Architecture 3-tiers
+  <TechStackSlide />,        // 15 — Stack Technique
+  <ChallengesSlide />,       // 16 — Difficultés & Solutions
+  <DemoSlide />,             // 17 — Interfaces web
+  <MobileSlide />,           // 18 — Application mobile Flutter
+  <CICDSlide />,             // 19 — Infrastructure & DevOps
+  <BackupSlide />,           // 20 — Stratégie de Sauvegarde
+  <BackupDiagramSlide />,    // 22 — Architecture de Sauvegarde
+  <BilanSlide />,            // 23 — Bilan du Projet
+  <LimitesSlide />,          // 24 — Limites & Perspectives
+  <IntegrationTestsSlide />, // 25 — Perspectives (Ancien IntegrationTests)
+  <FutureEvolutionSlide />,  // 26 — Perspectives & Évolutions
+  <ConclusionSlide />,       // 27 — Conclusion
+  <ThanksSlide />,           // 28 — Questions
 ];
 
 const Index = () => {
