@@ -27,7 +27,7 @@ const HypotheseSlide = () => (
         ?
       </div>
       <p className="text-xl md:text-2xl font-medium leading-relaxed text-foreground text-center">
-        "L'intégration de passerelles de paiement mobile locales (AmanaTa, NITA) couplée à une architecture robuste (Laravel/React) et un mode hors-ligne permet de concevoir une solution de billetterie électronique sécurisée, traçable et accessible, répondant efficacement aux contraintes économiques et techniques du contexte nigérien."
+        "Il est techniquement et économiquement viable de concevoir et déployer une plateforme de billetterie électronique sécurisée, adaptée au marché nigérien, en capitalisant sur l'infrastructure mobile existante et les passerelles de paiement locales AmanaTa B2B et NITA."
       </p>
     </motion.div>
 
@@ -39,8 +39,8 @@ const HypotheseSlide = () => (
     >
       {[
         "Sécurisation des flux",
-        "Accessibilité offline",
-        "Inclusion financière"
+        "Inclusion financière",
+        "Déployée en production"
       ].map((item, i) => (
         <div key={i} className="flex items-center gap-2 px-4 py-2 bg-secondary/40 rounded-full border border-border/50 text-sm font-semibold text-muted-foreground">
           <CheckCircle2 className="w-4 h-4 text-primary" />

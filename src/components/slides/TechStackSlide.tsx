@@ -3,43 +3,43 @@ import { motion, AnimatePresence } from "framer-motion";
 
 /* ── Image Logos ────────────────────────────────────────────────── */
 const ReactLogo = ({ size = 32 }: LogoProps) => (
-  <img src="/Logos/reactjs.webp" width={size} height={size} alt="React" className="object-contain" />
+  <img src="/Logos/reactjs.webp" width={size} height={size} alt="React" className="w-full h-full object-contain rounded-full" />
 );
 
 const TailwindLogo = ({ size = 32 }: LogoProps) => (
-  <img src="/Logos/tailwind-css-logo-vector.png" width={size} height={size} alt="Tailwind" className="object-contain" />
+  <img src="/Logos/tailwind-css-logo-vector.png" width={size} height={size} alt="Tailwind" className="w-full h-full object-contain rounded-full" />
 );
 
 const ShadcnLogo = ({ size = 32 }: LogoProps) => (
-  <img src="/Logos/Shadcdn.png" width={size} height={size} alt="Shadcn" className="object-contain" />
+  <img src="/Logos/Shadcdn.png" width={size} height={size} alt="Shadcn" className="w-full h-full object-contain rounded-full" />
 );
 
 const TanstackLogo = ({ size = 32 }: LogoProps) => (
-  <img src="/Logos/tanstack.png" width={size} height={size} alt="TanStack" className="object-contain" />
+  <img src="/Logos/tanstack.png" width={size} height={size} alt="TanStack" className="w-full h-full object-contain rounded-full" />
 );
 
 const LaravelLogo = ({ size = 32 }: LogoProps) => (
-  <img src="/Logos/laravel-featured.png" width={size} height={size} alt="Laravel" className="object-contain" />
+  <img src="/Logos/laravel-featured.png" width={size} height={size} alt="Laravel" className="w-full h-full object-contain rounded-full" />
 );
 
 const HorizonLogo = ({ size = 32 }: LogoProps) => (
-  <img src="/Logos/laravel-featured.png" width={size} height={size} alt="Horizon" className="object-contain grayscale brightness-150" />
+  <img src="/Logos/laravel-featured.png" width={size} height={size} alt="Horizon" className="w-full h-full object-contain grayscale brightness-150 rounded-full" />
 );
 
 const PostgresLogo = ({ size = 32 }: LogoProps) => (
-  <img src="/Logos/postgresql.png" width={size} height={size} alt="PostgreSQL" className="object-contain" />
+  <img src="/Logos/postgresql.png" width={size} height={size} alt="PostgreSQL" className="w-full h-full object-contain rounded-full" />
 );
 
 const DokployLogo = ({ size = 32 }: LogoProps) => (
-  <img src="/Logos/Dopkloy.webp" width={size} height={size} alt="Dokploy" className="object-contain" />
+  <img src="/Logos/Dopkloy.webp" width={size} height={size} alt="Dokploy" className="w-full h-full object-contain rounded-full" />
 );
 
 const VPSLogo = ({ size = 32 }: LogoProps) => (
-  <img src="/Logos/Hostinger_logo.png" width={size} height={size} alt="Hetzner" className="object-contain" />
+  <img src="/Logos/Hostinger_logo.png" width={size} height={size} alt="Hetzner" className="w-full h-full object-contain rounded-full" />
 );
 
 const CloudflareLogo = ({ size = 32 }: LogoProps) => (
-  <img src="/Logos/CLOUDFLARE.png.webp" width={size} height={size} alt="Cloudflare" className="object-contain" />
+  <img src="/Logos/CLOUDFLARE.png.webp" width={size} height={size} alt="Cloudflare" className="w-full h-full object-contain rounded-full" />
 );
 
 
@@ -125,9 +125,9 @@ const Modal = ({ cat, onClose }: { cat: Category; onClose: () => void }) => {
               {/* Logo + pulse */}
               <div className="relative flex-shrink-0 w-16 h-16 flex items-center justify-center">
                 <span className="absolute inset-0 rounded-full animate-ping" style={{ background: t.brandColor, opacity: 0.15 }} />
-                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm"
+                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm overflow-hidden p-1.5"
                   style={{ boxShadow: `0 0 0 2px ${t.brandColor}28` }}>
-                  <t.Logo size={36} color={t.brandColor} />
+                  <t.Logo size={48} color={t.brandColor} />
                 </div>
               </div>
               <div className="min-w-0">
@@ -167,8 +167,8 @@ const CatCard = ({ cat, delay, onClick }: { cat: Category; delay: number; onClic
     {/* White logos row */}
     <div className="flex items-center gap-4">
       {cat.techs.map((t, i) => (
-        <div key={i} className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center backdrop-blur-sm">
-          <t.Logo size={32} color="white" />
+        <div key={i} className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-sm overflow-hidden p-1.5">
+          <t.Logo size={48} color="white" />
         </div>
       ))}
       <span className="ml-auto text-white/40 text-2xl font-light">→</span>

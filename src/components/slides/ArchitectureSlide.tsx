@@ -80,7 +80,7 @@ const ArchitectureSlide = () => {
           style={{ background: "#F0FDF4", borderColor: "#86EFAC" }}
         >
           <p className="text-[10px] font-black uppercase tracking-widest text-green-700 mb-2 text-center">
-            Tier 2 — Application · VPS Hetzner · Docker + Dokploy
+            Tier 2 — Application · VPS Contabo KVM 2 · Docker + Dokploy
           </p>
           <div className="flex gap-3">
             {/* Laravel */}

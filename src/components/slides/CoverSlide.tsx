@@ -9,15 +9,16 @@ const CoverSlide = () => {
         className="text-white px-10 py-3 flex items-center justify-center gap-8 flex-shrink-0"
       >
         <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-md border-2 border-white flex-shrink-0">
-          <img src="/Logos/logoOCI.jpg" alt="OCI Logo" className="w-10 h-10 object-contain rounded-full" />
+          <img src="/Logos/logoOCI.jpg" alt="OCI Logo" className="w-full h-full object-cover" />
         </div>
         <div className="text-center">
+          <p className="text-base font-semibold text-white/95 mb-1" style={{ fontFamily: "serif", letterSpacing: "0.05em" }}>بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
           <p className="font-black text-[10px] tracking-widest text-white/90">ORGANISATION DE LA COOPÉRATION ISLAMIQUE</p>
           <p className="font-black text-sm tracking-wide mt-0.5">UNIVERSITÉ ISLAMIQUE DU NIGER</p>
           <p className="text-xs text-white/80 mt-0.5">Faculté des Sciences et Techniques — Département Informatique</p>
         </div>
         <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-md border-2 border-white flex-shrink-0">
-          <img src="/Logos/logoUIN.jpg" alt="UIN Logo" className="w-10 h-10 object-contain rounded-full" />
+          <img src="/Logos/logoUIN.jpg" alt="UIN Logo" className="w-full h-full object-cover" />
         </div>
       </div>
 
@@ -31,10 +32,8 @@ const CoverSlide = () => {
         >
           {/* TiQuick logo */}
           <div>
-            <div
-              className="inline-flex items-center gap-1 mb-2"
-              style={{ background: "linear-gradient(135deg, #18636B, #43A6B0)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
-            >
+            <div className="inline-flex items-center gap-3 mb-2">
+              <img src="/TiQuickLogo-favicon.png" alt="TiQuick" className="w-16 h-16 object-contain flex-shrink-0" />
               <span className="text-7xl font-black tracking-tight" style={{ color: "#18636B" }}>Ti</span>
               <span className="text-7xl font-black tracking-tight" style={{ color: "#43A6B0" }}>Quick</span>
             </div>
@@ -81,6 +80,18 @@ const CoverSlide = () => {
               <p className="font-bold mt-1">2025 – 2026</p>
             </div>
           </div>
+
+          {/* Promotion badge */}
+          <div className="flex justify-center mt-2">
+            <div
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border-2 text-sm font-bold tracking-wide"
+              style={{ borderColor: "#18636B", color: "#18636B", background: "rgba(24,99,107,0.06)" }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#18636B" }} />
+              Promotion 2022 – 2026
+              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#18636B" }} />
+            </div>
+          </div>
         </motion.div>
       </div>
 
@@ -90,16 +101,16 @@ const CoverSlide = () => {
         className="text-white px-10 py-3 flex items-center justify-between flex-shrink-0"
       >
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-white/20 rounded flex items-center justify-center">
-            <span className="text-[10px] font-black">H</span>
+          <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center overflow-hidden shadow-sm flex-shrink-0">
+            <img src="/HypeAgencyIconLogo.png" alt="Hype Agency" className="w-full h-full object-contain" />
           </div>
           <span className="text-xs font-bold tracking-wider">HYPE AGENCY</span>
         </div>
         <div className="w-1.5 h-1.5 rounded-full bg-white/40" />
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold tracking-wider">CAPITAL HUMAIN</span>
-          <div className="w-6 h-6 bg-white/20 rounded flex items-center justify-center">
-            <span className="text-[10px] font-black">C</span>
+          <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center overflow-hidden shadow-sm flex-shrink-0">
+            <img src="/CapitalHumainLogo.jpeg" alt="Capital Humain" className="w-full h-full object-contain" />
           </div>
         </div>
       </div>

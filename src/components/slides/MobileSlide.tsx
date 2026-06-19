@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Home, Theater } from "lucide-react";
+import { Home, Theater, User } from "lucide-react";
 
 const screens = [
-  { icon: Home, label: "Accueil", img: "/AppMobile/Accueil.jpeg" },
+  { icon: Home,    label: "Accueil",          img: "/AppMobile/Accueil.jpeg" },
   { icon: Theater, label: "Détail Événement", img: "/AppMobile/DetaileVENTS.jpeg" },
+  { icon: User,    label: "Profil",           img: "/AppMobile/UserProfile.jpeg" },
 ];
 
 const Phone = ({ Icon, label, img }: { Icon: any; label: string; img: string }) => {
@@ -52,9 +53,12 @@ const MobileSlide = () => {
           Application mobile{" "}
           <span className="text-primary">TiQuick</span>
         </h2>
-        <p className="text-sm text-muted-foreground mt-1">
+        <p className="text-sm text-muted-foreground mt-1 flex items-center justify-center gap-2 flex-wrap">
           Flutter — iOS & Android · Développée par{" "}
-          <span className="font-semibold text-primary">Agence Capital Humain</span>
+          <span className="inline-flex items-center gap-1.5 bg-white border border-border rounded-lg px-2 py-0.5 shadow-sm">
+            <img src="/CapitalHumainLogo.jpeg" alt="Capital Humain" className="w-5 h-5 object-contain rounded" />
+            <span className="font-semibold text-primary text-sm">Agence Capital Humain</span>
+          </span>
         </p>
       </motion.div>
 
