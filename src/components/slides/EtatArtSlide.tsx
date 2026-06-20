@@ -150,17 +150,7 @@ const EtatArtSlide = () => {
         </div>
       </motion.div>
 
-      {/* Note */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4 }}
-        className="bg-secondary/50 p-4 rounded-2xl border border-secondary text-center mt-4"
-      >
-        <p className="text-sm font-semibold text-primary">
-          💡 TiQuick comble un vide technologique en offrant la seule API de billetterie souveraine, ouverte et connectée nativement aux fintechs nigériennes.
-        </p>
-      </motion.div>
+     
     </div>
   );
 };

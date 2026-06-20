@@ -58,15 +58,7 @@ const ConclusionSlide = () => {
           <div className="flex-1 h-px" style={{ background: "#D4E8E9" }} />
         </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.1 }}
-          className="text-base italic mt-5"
-          style={{ color: "#4A6567" }}
-        >
-          "La meilleure façon de prédire l'avenir, c'est de le construire."
-        </motion.p>
+       
       </div>
     </div>
   );

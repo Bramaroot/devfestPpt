@@ -1,73 +1,129 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, Lightbulb, CheckCircle2 } from "lucide-react";
+import { AlertTriangle, CheckCircle2, RotateCcw } from "lucide-react";
 
-const ChallengesSlide = () => {
-  const challenges = [
-    {
-      title: "APIs locales non documentées",
-      desc: "Difficulté à obtenir des sandbox fonctionnels et des docs à jour pour AmanaTa/NITA.",
-      solution: "Reverse-engineering des flux, tests directs en production (petits montants) et support direct.",
-      color: "amber"
-    },
-    {
-      title: "Contraintes techniques NITA",
-      desc: "L'API NITA rejette les accents (UTF-8) et impose un Whitelisting d'IP strict.",
-      solution: "Implémentation d'un service de normalisation de texte et tunnel proxy pour les tests locaux.",
-      color: "blue"
-    },
-    {
-      title: "Connexion instable au Niger",
-      desc: "Risque de perte de session ou d'interruption durant le tunnel d'achat.",
-      solution: "Utilisation de TanStack Query pour le cache et mécanisme d'idempotence côté backend.",
-      color: "emerald"
-    }
-  ];
+const CARD_H = 220;
+
+const challenges = [
+  {
+    num: "01",
+    title: "APIs locales non documentées",
+    desc: "Impossible d'obtenir des environnements de test stables ni des docs à jour pour NITA / AmanaTa.",
+    solution: "Reverse-engineering des flux HTTP, tests directs en production avec de petits montants, et contact direct avec les équipes techniques.",
+    accent: "#D97706", frontBg: "#FFFBEB", frontBorder: "#FDE68A",
+    backBg: "#FEF3C7", backBorder: "#FCD34D",
+  },
+  {
+    num: "02",
+    title: "Absence de Dockerfile personnalisé",
+    desc: "Utilisation de Nixpacks (auto-détection) — peu de contrôle sur l'environnement de déploiement.",
+    solution: "Configuration via nixpacks.toml pour définir les phases de build et variables d'environnement. Migration vers un Dockerfile dédié prévue en V2.",
+    accent: "#2563EB", frontBg: "#EFF6FF", frontBorder: "#BFDBFE",
+    backBg: "#DBEAFE", backBorder: "#93C5FD",
+  },
+  {
+    num: "03",
+    title: "Connexion instable au Niger",
+    desc: "Risque de perte de session ou d'interruption durant le tunnel de paiement.",
+    solution: "TanStack Query pour le cache optimiste côté frontend + mécanisme d'idempotence sur les endpoints de paiement côté Laravel.",
+    accent: "#059669", frontBg: "#F0FDF4", frontBorder: "#A7F3D0",
+    backBg: "#D1FAE5", backBorder: "#6EE7B7",
+  },
+];
+
+const FlipCard = ({ c, index }: { c: typeof challenges[0]; index: number }) => {
+  const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className="flex flex-col h-full max-w-6xl mx-auto px-6 py-10">
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: index * 0.12 }}
+      onClick={() => setFlipped(f => !f)}
+      className="w-full cursor-pointer"
+      style={{ height: CARD_H, perspective: 1200 }}
+    >
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-12"
+        animate={{ rotateY: flipped ? 180 : 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        style={{
+          transformStyle: "preserve-3d",
+          position: "relative",
+          width: "100%",
+          height: CARD_H,
+        }}
       >
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">
-          Difficultés & <span className="text-primary">Solutions</span>
-        </h2>
-        <div className="h-1 w-24 bg-primary mx-auto rounded-full" />
-      </motion.div>
+        {/* FRONT */}
+        <div
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            background: c.frontBg,
+            borderColor: c.frontBorder,
+            position: "absolute", inset: 0,
+          }}
+          className="rounded-2xl border flex items-center gap-6 px-8 overflow-hidden"
+        >
+          <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+            style={{ background: c.frontBorder }}>
+            <AlertTriangle className="w-8 h-8" style={{ color: c.accent }} />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-xs font-black font-mono" style={{ color: c.accent }}>#{c.num}</span>
+              <h3 className="font-bold text-lg text-foreground">{c.title}</h3>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
+          </div>
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground/50 flex-shrink-0 select-none">
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>solution</span>
+          </div>
+        </div>
 
-      <div className="grid gap-6">
-        {challenges.map((c, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: i * 0.2 }}
-            className="flex flex-col md:flex-row gap-6 bg-card rounded-[2.5rem] border border-border overflow-hidden shadow-xl"
-          >
-            <div className={`md:w-1/3 p-8 flex flex-col justify-center items-center text-center bg-${c.color}-500/10`}>
-              <AlertTriangle className={`w-12 h-12 text-${c.color}-500 mb-4`} />
-              <h3 className="text-xl font-black leading-tight mb-2">{c.title}</h3>
-              <p className="text-sm text-muted-foreground italic">{c.desc}</p>
-            </div>
-            
-            <div className="flex-1 p-8 flex flex-col justify-center relative">
-               <div className="absolute top-4 right-8 opacity-5">
-                  <Lightbulb className="w-32 h-32" />
-               </div>
-               <div className="flex items-center gap-4 mb-4">
-                  <CheckCircle2 className="w-8 h-8 text-primary" />
-                  <h4 className="text-2xl font-bold text-primary">Solution Apportée</h4>
-               </div>
-               <p className="text-lg font-medium leading-relaxed">
-                  {c.solution}
-               </p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
+        {/* BACK */}
+        <div
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+            background: c.backBg,
+            borderColor: c.backBorder,
+            position: "absolute", inset: 0,
+          }}
+          className="rounded-2xl border flex items-center gap-6 px-8 overflow-hidden"
+        >
+          <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+            style={{ background: c.backBorder }}>
+            <CheckCircle2 className="w-8 h-8" style={{ color: c.accent }} />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-[11px] font-bold uppercase tracking-widest mb-2" style={{ color: c.accent }}>
+              Solution apportée
+            </p>
+            <p className="text-sm text-foreground leading-relaxed">{c.solution}</p>
+          </div>
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground/50 flex-shrink-0 select-none">
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>retour</span>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 };
+
+const ChallengesSlide = () => (
+  <div className="flex flex-col max-w-4xl mx-auto px-6 py-6 w-full" style={{ gap: 16 }}>
+    <motion.div initial={{ opacity: 0, y: -18 }} animate={{ opacity: 1, y: 0 }}>
+      <h2 className="text-3xl md:text-4xl font-bold">
+        Difficultés & <span className="text-primary">Solutions</span>
+      </h2>
+      <p className="text-xs text-muted-foreground mt-0.5">Cliquez sur une carte pour révéler la solution</p>
+    </motion.div>
+
+    {challenges.map((c, i) => <FlipCard key={i} c={c} index={i} />)}
+  </div>
+);
 
 export default ChallengesSlide;

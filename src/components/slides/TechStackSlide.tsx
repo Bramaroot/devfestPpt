@@ -42,9 +42,13 @@ const CloudflareLogo = ({ size = 32 }: LogoProps) => (
   <img src="/Logos/CLOUDFLARE.png.webp" width={size} height={size} alt="Cloudflare" className="w-full h-full object-contain rounded-full" />
 );
 
+const MailerooLogo = ({ size = 32 }: LogoProps) => (
+  <img src="/Logos/LogoMaileroo.png" width={size} height={size} alt="Maileroo" className="w-full h-full object-contain rounded-full" />
+);
+
 
 /* ── Data ───────────────────────────────────────────────────────── */
-type Tech = { name: string; role: string; brandColor: string; bg: string; Logo: React.ComponentType<LogoProps> };
+type Tech = { name: string; role: string; brandColor: string; bg: string; Logo: React.ComponentType<LogoProps>; fullWidth?: boolean };
 type Category = { id: string; label: string; subtitle: string; gradient: string; techs: Tech[] };
 
 const categories: Category[] = [
@@ -65,6 +69,7 @@ const categories: Category[] = [
       { name: "Laravel 12",  role: "API REST · Sanctum · RBAC",  brandColor: "#FF2D20", bg: "#FFF1F0", Logo: LaravelLogo },
       { name: "Horizon",     role: "Queue workers · Monitoring", brandColor: "#FF6B35", bg: "#FFF5F0", Logo: HorizonLogo },
       { name: "PostgreSQL",  role: "Base relationnelle",         brandColor: "#336791", bg: "#EBF4FD", Logo: PostgresLogo },
+      { name: "Maileroo",    role: "Envoi d'emails transactionnels", brandColor: "#6C47FF", bg: "#F0EEFF", Logo: MailerooLogo },
     ],
   },
   {
@@ -73,7 +78,7 @@ const categories: Category[] = [
     techs: [
       { name: "Dokploy",     role: "Deploy self-hosted",     brandColor: "#6366F1", bg: "#EEEFFE", Logo: DokployLogo },
       { name: "VPS Hetzner", role: "Hébergement cloud",      brandColor: "#D50000", bg: "#FFEAEC", Logo: VPSLogo },
-      { name: "Cloudflare",  role: "DNS · CDN · SSL · DDoS", brandColor: "#F6821F", bg: "#FEF3E2", Logo: CloudflareLogo },
+      { name: "Cloudflare",  role: "DNS · CDN · SSL · DDoS", brandColor: "#F6821F", bg: "#FEF3E2", Logo: CloudflareLogo, fullWidth: true },
     ],
   },
 ];
@@ -119,7 +124,7 @@ const Modal = ({ cat, onClose }: { cat: Category; onClose: () => void }) => {
               key={i}
               initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.04 + i * 0.07, type: "spring", stiffness: 260, damping: 22 }}
-              className="flex items-center gap-4 rounded-2xl border border-border/60 p-4"
+              className={`flex items-center gap-4 rounded-2xl border border-border/60 p-4 ${t.fullWidth ? "col-span-2" : ""}`}
               style={{ background: t.bg }}
             >
               {/* Logo + pulse */}

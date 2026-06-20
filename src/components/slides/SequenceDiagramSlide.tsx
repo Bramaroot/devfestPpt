@@ -21,10 +21,7 @@ const SequenceDiagramSlide = () => {
       desc: "Flux complet · Cas nominal & cas d'erreur · Idempotence webhook",
       src: "/AmanaTa sequence Diagram.svg",
       notes: [
-        { icon: "🔐", text: "Signature = HMAC-SHA256(ts + METHOD + URI + body, api_key)" },
-        { icon: "♻️", text: "Idempotence Redis — évite le double traitement du webhook" },
-        { icon: "⚠️", text: "Pas de sandbox disponible — tests effectués en production" },
-      ]
+        ]
     },
     nita: {
       title: "Diagramme de séquence — NITA API",

@@ -1,207 +1,157 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { 
-  XCircle, AlertCircle, ShieldAlert, ZapOff, 
-  Rocket, Zap, Globe, Smartphone, BarChart3, 
-  CheckCircle2, ArrowRight
+import { motion } from "framer-motion";
+import {
+  XCircle, AlertCircle, ShieldAlert, ZapOff,
+  Zap, Globe, Smartphone, BarChart3,
+  ArrowRight
 } from "lucide-react";
 
-const LimitesPerspSlide = () => {
-  const [activeTab, setActiveTab] = useState<"limits" | "roadmap" | "evolutions">("limits");
+const limits = [
+  { icon: AlertCircle, title: "Notifications email", desc: "Envoi automatique des billets par email pas encore activé en production." },
+  { icon: ZapOff,      title: "Polling NITA",         desc: "Absence de webhook natif — polling constant côté frontend." },
+  { icon: ShieldAlert, title: "Tests automatisés",    desc: "Pas de tests dans le pipeline CI/CD — validations manuelles avant chaque merge. E2E Playwright en développement." },
+  { icon: XCircle,     title: "Charge réelle",        desc: "Système validé techniquement, en attente d'une montée en charge massive réelle." },
+];
 
-  const limits = [
-    { title: "Automatisation des Notifications", desc: "L'envoi automatique des billets par email n'est pas encore activé en production.", icon: AlertCircle },
-    { title: "Dépendance au Polling (NITA)", desc: "L'absence de webhook natif chez NITA impose un polling constant côté frontend.", icon: ZapOff },
-    { title: "Couverture de Tests", desc: "Les tests bout-en-bout (Playwright) pour le frontend sont encore en phase de développement.", icon: ShieldAlert },
-    { title: "Charge Réelle", desc: "Bien que testé techniquement, le système attend une montée en charge massive réelle.", icon: XCircle },
-  ];
+const roadmap = [
+  {
+    priority: "Court terme",
+    color: "bg-red-500",
+    textColor: "text-red-600",
+    bg: "bg-red-50 border-red-200",
+    items: ["Envoi automatique des billets par email", "Tests E2E Playwright", "Validation en production avec vrais événements"],
+  },
+  {
+    priority: "Moyen terme",
+    color: "bg-amber-400",
+    textColor: "text-amber-600",
+    bg: "bg-amber-50 border-amber-200",
+    items: ["Orange Money + Moov Money", "Mode hors-ligne QR (PWA)", "Dashboard organisateur Flutter"],
+  },
+  {
+    priority: "Long terme",
+    color: "bg-green-500",
+    textColor: "text-green-600",
+    bg: "bg-green-50 border-green-200",
+    items: ["Expansion régionale (Burkina, Mali, Tchad)", "Business Intelligence + IA", "API publique partenaires"],
+  },
+];
 
-  const roadmap = [
-    {
-      priority: "Court terme",
-      dot: "bg-red-400 animate-pulse",
-      items: [
-        "Envoi automatique des billets par email",
-        "Tests Playwright (end-to-end frontend)",
-        "Validation en production réelle avec vrais événements payants",
-      ],
-    },
-    {
-      priority: "Moyen terme",
-      dot: "bg-yellow-400",
-      items: [
-        "Intégration Orange Money + Moov Money",
-        "Mode hors-ligne pour le scan QR (PWA / Service Worker)",
-        "Dashboard organisateur sur mobile Flutter",
-      ],
-    },
-    {
-      priority: "Long terme",
-      dot: "bg-green-400",
-      items: [
-        "Expansion régionale (Burkina, Mali, Tchad)",
-        "Business Intelligence + prévisions IA",
-        "API publique pour partenaires tiers",
-      ],
-    },
-  ];
+const evolutions = [
+  { icon: Zap,         color: "bg-yellow-100 text-yellow-600", title: "Omnicanalité",    desc: "Orange Money & Moov Money via agrégateurs locaux." },
+  { icon: Globe,       color: "bg-blue-100 text-blue-600",     title: "Offline First",   desc: "Synchronisation différée des scans via Service Workers." },
+  { icon: Smartphone,  color: "bg-green-100 text-green-600",   title: "App Organisateur",desc: "Gestion des ventes sur mobile Flutter." },
+  { icon: BarChart3,   color: "bg-purple-100 text-purple-600", title: "Business Intel.", desc: "Analytics avancés et prévisions IA pour optimiser les remplissages." },
+];
 
-  const evolutions = [
-    { icon: <Zap className="w-5 h-5 text-yellow-500" />, title: "Omnicanalité de paiement", desc: "Intégration d'Orange Money et Moov Money via des agrégateurs locaux pour une couverture à 100%." },
-    { icon: <Globe className="w-5 h-5 text-blue-500" />, title: "Mode Offline First", desc: "Synchronisation différée des scans via Service Workers pour les zones à faible connectivité." },
-    { icon: <Smartphone className="w-5 h-5 text-green-500" />, title: "App Mobile Organisateur", desc: "Extension de l'app Flutter pour permettre aux organisateurs de gérer leurs ventes sur mobile." },
-    { icon: <BarChart3 className="w-5 h-5 text-purple-500" />, title: "Business Intelligence", desc: "Analytics avancés avec prévisions de vente basées sur l'IA pour optimiser les remplissages." }
-  ];
+const container = { hidden: {}, show: { transition: { staggerChildren: 0.07 } } };
+const item      = { hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } };
 
-  return (
-    <div className="flex flex-col h-full max-w-5xl mx-auto px-6 py-6 justify-between">
-      {/* Title */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-4 flex-shrink-0">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-left"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Limites & <span className="text-primary">Perspectives</span>
-          </h2>
-          <p className="text-muted-foreground text-xs font-medium">Le futur de TiQuick et la roadmap d'évolution</p>
-        </motion.div>
+const LimitesPerspSlide = () => (
+  <div className="flex flex-col h-full max-w-6xl mx-auto px-6 py-6">
 
-        {/* Tabs Control */}
-        <div className="flex bg-secondary/80 backdrop-blur-sm p-1 rounded-full border border-border">
-          <button
-            onClick={() => setActiveTab("limits")}
-            className={`px-3 py-1.5 rounded-full font-bold text-xs transition-all ${
-              activeTab === "limits"
-                ? "bg-primary text-white shadow-md"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            Limites Techniques
-          </button>
-          <button
-            onClick={() => setActiveTab("roadmap")}
-            className={`px-3 py-1.5 rounded-full font-bold text-xs transition-all ${
-              activeTab === "roadmap"
-                ? "bg-primary text-white shadow-md"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            Roadmap V2
-          </button>
-          <button
-            onClick={() => setActiveTab("evolutions")}
-            className={`px-3 py-1.5 rounded-full font-bold text-xs transition-all ${
-              activeTab === "evolutions"
-                ? "bg-primary text-white shadow-md"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            Évolutions Clés
-          </button>
-        </div>
-      </div>
+    {/* Title */}
+    <motion.div initial={{ opacity: 0, y: -18 }} animate={{ opacity: 1, y: 0 }} className="mb-5 flex-shrink-0">
+      <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+        Limites & <span className="text-primary">Perspectives</span>
+      </h2>
+      <p className="text-muted-foreground text-xs mt-0.5">Ce qui reste à faire et où TiQuick va</p>
+    </motion.div>
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col justify-center min-h-[350px]">
-        <AnimatePresence mode="wait">
-          {activeTab === "limits" ? (
-            <motion.div
-              key="limits-panel"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.2 }}
-              className="grid md:grid-cols-2 gap-4 w-full"
-            >
-              {limits.map((item, i) => (
-                <div
-                  key={i}
-                  className="bg-orange-500/5 border border-orange-500/10 p-5 rounded-2xl flex items-start gap-3 shadow-sm hover:border-orange-500/20 transition-colors"
-                >
-                  <div className="p-2.5 bg-orange-500/10 rounded-xl text-orange-600 shrink-0">
-                    <item.icon size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-sm text-foreground mb-0.5">{item.title}</h3>
-                    <p className="text-xs text-muted-foreground leading-normal">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          ) : activeTab === "roadmap" ? (
-            <motion.div
-              key="roadmap-panel"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.2 }}
-              className="grid md:grid-cols-3 gap-4 w-full"
-            >
-              {roadmap.map((p, i) => (
-                <div
-                  key={i}
-                  className="bg-card border border-border rounded-2xl p-5 shadow-sm hover:border-primary/20 transition-colors"
-                >
-                  <div className="flex items-center gap-2 mb-3 border-b border-border pb-2">
-                    <div className={`w-2.5 h-2.5 rounded-full ${p.dot} flex-shrink-0`} />
-                    <h3 className="font-bold text-xs uppercase tracking-wider text-foreground">{p.priority}</h3>
-                  </div>
-                  <ul className="space-y-2">
-                    {p.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-1.5">
-                        <span className="text-muted-foreground/60 text-xs mt-0.5 flex-shrink-0">→</span>
-                        <p className="text-[10px] text-muted-foreground leading-relaxed">{item}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div
-              key="evolutions-panel"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.2 }}
-              className="grid md:grid-cols-2 gap-4 w-full"
-            >
-              {evolutions.map((ev, i) => (
-                <div
-                  key={i}
-                  className="flex gap-4 p-5 bg-card border border-border rounded-2xl hover:border-primary/30 transition-colors shadow-sm group"
-                >
-                  <div className="flex-shrink-0 w-10 h-10 bg-secondary rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
-                    {ev.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold mb-1">{ev.title}</h3>
-                    <p className="text-[11px] text-muted-foreground leading-normal">
-                      {ev.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+    {/* 3-column layout */}
+    <div className="grid grid-cols-3 gap-4 flex-1 min-h-0">
 
-      {/* Footer Opportunity */}
+      {/* ── COL 1 : Limites ───────────────────────── */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="bg-secondary/40 p-3 rounded-2xl border border-secondary text-center mt-3 flex-shrink-0"
+        variants={container} initial="hidden" animate="show"
+        className="flex flex-col gap-2"
       >
-        <p className="text-xs font-semibold text-primary">
-          🇳🇪 TiQuick : Redéfinir l'événementiel et l'inclusion financière par le numérique au Niger.
-        </p>
+        <div className="flex items-center gap-2 mb-1">
+          <div className="w-1 h-5 rounded-full bg-orange-400" />
+          <p className="text-xs font-black uppercase tracking-widest text-orange-500">Limites actuelles</p>
+        </div>
+
+        {limits.map((l, i) => (
+          <motion.div key={i} variants={item}
+            className="bg-orange-500/5 border border-orange-500/15 rounded-2xl p-3.5 flex gap-3 hover:border-orange-400/30 transition-colors"
+          >
+            <div className="w-8 h-8 rounded-xl bg-orange-100 flex items-center justify-center flex-shrink-0">
+              <l.icon className="w-4 h-4 text-orange-500" />
+            </div>
+            <div>
+              <p className="font-bold text-xs text-foreground leading-tight">{l.title}</p>
+              <p className="text-[10px] text-muted-foreground leading-relaxed mt-0.5">{l.desc}</p>
+            </div>
+          </motion.div>
+        ))}
       </motion.div>
+
+      {/* ── COL 2 : Roadmap ───────────────────────── */}
+      <motion.div
+        variants={container} initial="hidden" animate="show"
+        className="flex flex-col gap-2"
+      >
+        <div className="flex items-center gap-2 mb-1">
+          <div className="w-1 h-5 rounded-full bg-primary" />
+          <p className="text-xs font-black uppercase tracking-widest text-primary">Roadmap V2</p>
+        </div>
+
+        {roadmap.map((r, i) => (
+          <motion.div key={i} variants={item}
+            className={`border rounded-2xl p-3.5 flex-1 ${r.bg}`}
+          >
+            <div className="flex items-center gap-2 mb-2.5">
+              <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${r.color} ${i === 0 ? "animate-pulse" : ""}`} />
+              <p className={`font-black text-xs uppercase tracking-wide ${r.textColor}`}>{r.priority}</p>
+            </div>
+            <ul className="space-y-1.5">
+              {r.items.map((it, j) => (
+                <li key={j} className="flex items-start gap-1.5">
+                  <ArrowRight className="w-3 h-3 text-muted-foreground/50 flex-shrink-0 mt-0.5" />
+                  <p className="text-[10px] text-muted-foreground leading-relaxed">{it}</p>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* ── COL 3 : Évolutions ────────────────────── */}
+      <motion.div
+        variants={container} initial="hidden" animate="show"
+        className="flex flex-col gap-2"
+      >
+        <div className="flex items-center gap-2 mb-1">
+          <div className="w-1 h-5 rounded-full bg-violet-400" />
+          <p className="text-xs font-black uppercase tracking-widest text-violet-500">Évolutions clés</p>
+        </div>
+
+        {evolutions.map((ev, i) => (
+          <motion.div key={i} variants={item}
+            className="bg-card border border-border rounded-2xl p-3.5 flex gap-3 flex-1 hover:border-primary/25 hover:shadow-sm transition-all group"
+          >
+            <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${ev.color} group-hover:scale-105 transition-transform`}>
+              <ev.icon className="w-4 h-4" />
+            </div>
+            <div>
+              <p className="font-bold text-xs text-foreground leading-tight">{ev.title}</p>
+              <p className="text-[10px] text-muted-foreground leading-relaxed mt-0.5">{ev.desc}</p>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+
     </div>
-  );
-};
+
+    {/* Footer */}
+    <motion.div
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+      className="mt-4 bg-secondary/40 border border-secondary rounded-2xl px-5 py-2.5 text-center flex-shrink-0"
+    >
+      <p className="text-xs font-semibold text-primary">
+        TiQuick — Redéfinir l'événementiel et l'inclusion financière par le numérique au Niger
+      </p>
+    </motion.div>
+  </div>
+);
 
 export default LimitesPerspSlide;

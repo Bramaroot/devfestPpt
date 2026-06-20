@@ -25,7 +25,7 @@ const ArchitectureSlide = () => (
       className="flex-1 min-h-0 w-full flex items-center justify-center"
     >
       <img
-        src="/diagram/archTroisTiers.png"
+        src="/Diagram/archTroisTiers.png"
         alt="Architecture 3-Tiers TiQuick"
         className="max-h-full max-w-full object-contain rounded-2xl shadow-md"
       />
